@@ -7,11 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600 " Width="850">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Margin="86,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="19"/>
-        <Label Content="TODOS:" HorizontalAlignment="Left" Margin="22,128,0,0" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="86,174,0,0" VerticalAlignment="Top" Width="100" Height="20"/>
-        <ListView Margin="425,71,73,78" FontSize="20"/>
-        <Button Content="Add" Height="32" Width="76" HorizontalAlignment="Left" Margin="98,216,0,0" VerticalAlignment="Top"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="White"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <TextBox Name ="txtTodo"  HorizontalAlignment="Left" Margin="86,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="19"/>
+        <Label Content="TODO:" HorizontalAlignment="Left" Margin="22,128,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="cbPrios" HorizontalAlignment="Left" Margin="86,174,0,0" VerticalAlignment="Top" Width="100" Height="20" SelectionChanged="cbPrios_SelectionChanged"/>
+        <ListView Name ="lstTodos"  Margin="425,71,73,78" FontSize="20"/>
+        <Button Name="btnAdd" Content="Add Todo" Height="32" Width="76" HorizontalAlignment="Left" Margin="98,216,0,0" VerticalAlignment="Top" FontSize="14" Foreground="Black" Background="#FF77EB6F" Click="btnAdd_Click"/>
         <Label Content="Prio:" HorizontalAlignment="Left" Margin="29,170,0,0" VerticalAlignment="Top" FontSize="14"/>
     </Grid>
 </Window>

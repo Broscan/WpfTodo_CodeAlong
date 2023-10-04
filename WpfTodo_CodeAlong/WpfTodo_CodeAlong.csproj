@@ -7,4 +7,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Skärmbild 2023-09-13 105019.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Skärmbild 2023-09-13 105019.png" />
+  </ItemGroup>
+
 </Project>

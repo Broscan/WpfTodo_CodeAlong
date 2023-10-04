@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WpfTodo_CodeAlong
+﻿namespace WpfTodo_CodeAlong
 {
     internal class Todo
     {
+        public string Name { get; set; }
+
+        public Priority Priority { get; set; }
+
+
+        public string GetInfo()
+        {
+            return $"{Name} - Priority: {Priority}";
+        }
     }
 }
