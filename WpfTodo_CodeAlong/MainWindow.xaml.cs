@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Media;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace WpfTodo_CodeAlong
 {
@@ -20,8 +20,16 @@ namespace WpfTodo_CodeAlong
             foreach (Priority priority in Enum.GetValues(typeof(Priority)))
             {
                 // Lägg till i comboboxen
-                cbPrios.Items.Add(priority.ToString());
+                //cbPrios.Items.Add(priority.ToString());
+
+                ListViewItem item = new();
+
+                item.Content = priority.ToString();
+                item.Tag = priority;
+
+                cbPrios.Items.Add(item);
             }
+
             cbPrios.SelectedIndex = 0;
         }
 
@@ -30,8 +38,8 @@ namespace WpfTodo_CodeAlong
 
             if (txtTodo.Text == "")
             {
-                SoundPlayer soundPlayer = new SoundPlayer("tiktok aughhh sound effect (abnormally goofy ahh).WAV");
-                soundPlayer.Play();
+                //SoundPlayer soundPlayer = new SoundPlayer("tiktok aughhh sound effect (abnormally goofy ahh).WAV");
+                //soundPlayer.Play();
                 // Visa varning          
                 MessageBox.Show("Please add a todo");
             }
@@ -49,19 +57,34 @@ namespace WpfTodo_CodeAlong
                 // Läs vad som är valt i comboboxen
 
 
-                // Annat sätt att göra det på
-                string priority = (string)cbPrios.SelectedItem;
+                ListViewItem selectedItem = (ListViewItem)cbPrios.SelectedItem;
+
 
                 // Skapa en todo
                 Todo newTodo = new();
                 newTodo.Name = todo;
-                // Hur man konverterar från en enum till en sträng
-                newTodo.Priority = (Priority)Enum.Parse(typeof(Priority), priority);
+
+                newTodo.Priority = (Priority)selectedItem.Tag;
 
 
                 // Lägg till todon i listview:en
 
-                lstTodos.Items.Add(newTodo.GetInfo());
+                // Skapa ett tomt ListViewItem
+
+                ListViewItem item = new();
+
+                // Sätt conten och tag på det nya LVI:et
+                item.Content = newTodo.GetInfo();
+                item.Tag = newTodo;
+
+                // Lägg till item:et till listan
+                lstTodos.Items.Add(item);
+
+
+                //lstTodos.Items.Add(newTodo.GetInfo());
+
+
+
                 // Rensa alla inputfält
 
                 txtTodo.Text = "";
@@ -70,9 +93,33 @@ namespace WpfTodo_CodeAlong
 
         }
 
-        private void cbPrios_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
 
+
+
+
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            // Kolla vilket item som är selectat i listan
+            ListViewItem selectedItem = (ListViewItem)lstTodos.SelectedItem;
+
+            // Ta bort det itemet från listView:en
+            lstTodos.Items.Remove(selectedItem);
+
+        }
+
+        private void lstTodos_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            ListViewItem selectedItem = (ListViewItem)lstTodos.SelectedItem;
+
+            if (selectedItem != null)
+            {
+
+                Todo selectedTodo = (Todo)selectedItem.Tag;
+
+                lblName.Content = selectedTodo.Name;
+                lblPrio.Content = selectedTodo.Priority;
+            }
         }
     }
 }

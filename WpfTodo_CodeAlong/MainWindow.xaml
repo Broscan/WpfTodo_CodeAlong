@@ -15,9 +15,12 @@
         </Grid.Background>
         <TextBox Name ="txtTodo"  HorizontalAlignment="Left" Margin="86,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="19"/>
         <Label Content="TODO:" HorizontalAlignment="Left" Margin="22,128,0,0" VerticalAlignment="Top"/>
-        <ComboBox Name="cbPrios" HorizontalAlignment="Left" Margin="86,174,0,0" VerticalAlignment="Top" Width="100" Height="20" SelectionChanged="cbPrios_SelectionChanged"/>
-        <ListView Name ="lstTodos"  Margin="425,71,73,78" FontSize="20"/>
+        <ComboBox Name="cbPrios" HorizontalAlignment="Left" Margin="86,174,0,0" VerticalAlignment="Top" Width="100" Height="20"/>
+        <ListView Name ="lstTodos"  Margin="425,71,73,78" FontSize="20" SelectionChanged="lstTodos_SelectionChanged_1"/>
         <Button Name="btnAdd" Content="Add Todo" Height="32" Width="76" HorizontalAlignment="Left" Margin="98,216,0,0" VerticalAlignment="Top" FontSize="14" Foreground="Black" Background="#FF77EB6F" Click="btnAdd_Click"/>
         <Label Content="Prio:" HorizontalAlignment="Left" Margin="29,170,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Name="lblName" Content="" HorizontalAlignment="Left" Margin="468,38,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Name="lblPrio" Content="" HorizontalAlignment="Left" Margin="713,38,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Button Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="555,526,0,0" VerticalAlignment="Top" Height="25" Width="92" Background="#FFE55151" Foreground="White" Click="btnDelete_Click"/>
     </Grid>
 </Window>
